@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
 import pyrebase
+from functools import wraps
 
 app = Flask(__name__)
 
@@ -31,14 +32,28 @@ def login():
 
         try:
             user = auth.sign_in_with_email_and_password(email,password)
+            print(user)
             session['logged_in'] = True
-            session['uid'] = user["idToken"]
+            session['uid'] = user["localId"]
+            session['email'] = user["dev@gm.com"]
         except Exception as Error:
-            # error = str(Error)
-            print("fall")
-            return render_template('login.html')
+            error = str(Error)
+            return render_template('loginerror.html',error=error)
     return render_template('loginpass.html')
+
+# Check if user logged in
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Only Member, Please login !!!', 'danger')
+            return redirect(url_for('login'))
+    return wrap
 
 if __name__ == '__main__':
     app.secret_key='DDoS'
     app.run(debug=True)
+
+
