@@ -39,6 +39,9 @@ def login():
             return render_template('login.html')
     return render_template('loginpass.html')
 
+
+
+
 if __name__ == '__main__':
     app.secret_key='DDoS'
     app.run(debug=True)
