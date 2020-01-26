@@ -32,14 +32,13 @@ def login():
 
         try:
             user = auth.sign_in_with_email_and_password(email,password)
-            print(user)
             session['logged_in'] = True
             session['uid'] = user["localId"]
             session['email'] = user["dev@gm.com"]
+            return render_template('loginpass.html')
         except Exception as Error:
             error = str(Error)
             return render_template('loginerror.html',error=error)
-    return render_template('loginpass.html')
 
 # Check if user logged in
 def is_logged_in(f):
