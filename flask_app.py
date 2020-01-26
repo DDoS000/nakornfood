@@ -39,7 +39,7 @@ def index():
 @app.route('/dashboard')
 @is_logged_in
 def dashboard():
-    return render_template('loginpass.html')
+    return render_template('dashboard.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
