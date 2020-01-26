@@ -1,54 +1,81 @@
-{% extends 'layoutdb.html' %}
+{% extends 'layoutdb.html' %} {% block head %}
+
+<style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 100px;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+</style>
+
+{% endblock %} {% block body %}
 
 
-{% block head %}
+<div class="row">
+    <div class="col s12 m4 l8"><p>s12 m4</p></div>
+    <div class="col s12 m4 l2"><p>s12 m4</p></div>
+  </div>
 
 
 
-{% endblock %}
 
-
-{% block body %}
-
-<div class="container">
-    <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="first_name" type="text" class="validate" name="storename">
-              <label for="first_name">ชื่อร้าน</label>
-            </div>
-          </div>
-          <div class="row">
-              <div class="row">
+ 
+        <!-- <form class="col s12">
+            <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea" name="desc"></textarea>
-                  <label for="textarea1">รายละเอียดร้าน</label>
+                    <input id="first_name" type="text" class="validate" name="storename" />
+                    <label for="first_name">ชื่อร้าน</label>
+
                 </div>
-              </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="time" type="email" class="validate" name="time">
-              <label for="time">เวลาเปิด-ปิด</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="lat" type="text" class="validate" name="lat">
-              <label for="lat">lat</label>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea" name="desc"></textarea>
+                        <label for="textarea1">รายละเอียดร้าน</label>
+                    </div>
+                </div>
             </div>
-            <div class="input-field col s6">
-              <input id="log" type="text" class="validate" name="lng">
-              <label for="log">log</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="time" type="email" class="validate" name="time" />
+                    <label for="time">เวลาเปิด-ปิด</label>
+                </div>
             </div>
-          </div>
-            <button class="btn waves-effect waves-light" type="submit" style="font-family:'Prompt'">บันทึกข้อมูล
-          </button>
-        </form>
-      </div>
-</div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="lat" type="text" class="validate" name="lat" />
+                    <label for="lat">lat</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="log" type="text" class="validate" name="lng" />
+                    <label for="log">log</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" style="font-family:'Prompt'">
+                บันทึกข้อมูล
+            </button>
+        </form> -->
+
+
+
+
+<!-- <div id="map"></div>
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByxAxM_f64MaGCNie0y3joCJmUUA_TRZE&callback=initMap" async
+    defer></script> -->
+
+
 
 {% endblock %}
-
-
