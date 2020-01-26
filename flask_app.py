@@ -72,7 +72,7 @@ def login():
             return redirect(url_for('dashboard'))
         except Exception as Error:
             print(Error)
-            error = 'Wrong username or password !!!'
+            error = 'อีเมลล์หรือรหัสผ่านไม่ถูกต้อง'
             return render_template('login.html', error=error)
     return render_template('login.html')
 
@@ -99,11 +99,24 @@ def manageStore():
         }
         try:
             db.collection(u'users').document(session['uid']).set(data)
-            flash('Updatepass', 'success')
+            flash('อัพเดทขูอมูลสําเร็จ', 'success')
             return render_template('manageStore.html')
         except KeyError:
             print(KeyError)
             return render_template('manageStore.html')
+    else:
+        doc_ref = db.collection(u'users').document(session['uid'])
+        try:
+            doc = doc_ref.get()
+            docs = doc.to_dict()
+            storename = docs["store"]["storename"]
+            desc = docs["store"]["desc"]
+            time = docs["store"]["time"]
+            lat = docs["store"]["location"]["lng"]
+            lng = docs["store"]["location"]["lat"]
+            return render_template('manageStore.html')
+        except google.cloud.exceptions.NotFound:
+            print(u'No such document!')
 
     return render_template('manageStore.html')
 
