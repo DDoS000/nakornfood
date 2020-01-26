@@ -9,20 +9,21 @@ app = Flask(__name__)
 
 
 # Use a service account
-cred = credentials.Certificate('./static/nkornfood-firebase-adminsdk-jojhd-77cb198e46.json')
+cred = credentials.Certificate(
+    './static/nkornfood-firebase-adminsdk-jojhd-77cb198e46.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
 fbConfig = {
-  "apiKey": "AIzaSyAqrVYlAR6WWzU9qDAvhI8mxpGf_lCYcso",
-  "authDomain": "nkornfood.firebaseapp.com",
-  "databaseURL": "https://nkornfood.firebaseio.com",
-  "projectId": "nkornfood",
-  "storageBucket": "nkornfood.appspot.com",
-  "messagingSenderId": "94762099297",
-  "appId": "1:94762099297:web:ecde49d9f1d141233a8020",
-  "measurementId": "G-HZRPLJLFZK"
+    "apiKey": "AIzaSyAqrVYlAR6WWzU9qDAvhI8mxpGf_lCYcso",
+    "authDomain": "nkornfood.firebaseapp.com",
+    "databaseURL": "https://nkornfood.firebaseio.com",
+    "projectId": "nkornfood",
+    "storageBucket": "nkornfood.appspot.com",
+    "messagingSenderId": "94762099297",
+    "appId": "1:94762099297:web:ecde49d9f1d141233a8020",
+    "measurementId": "G-HZRPLJLFZK"
 }
 
 firebase = pyrebase.initialize_app(fbConfig)
@@ -30,6 +31,8 @@ auth = firebase.auth()
 database = firebase.database()
 
 # Check if user logged in
+
+
 def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -39,6 +42,7 @@ def is_logged_in(f):
             flash('Only Member, Please login !!!', 'danger')
             return redirect(url_for('login'))
     return wrap
+
 
 @app.route('/')
 def index():
@@ -51,14 +55,15 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method =='POST':
+    if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
         try:
-            user = auth.sign_in_with_email_and_password(email,password)
+            user = auth.sign_in_with_email_and_password(email, password)
             # Passed
             session['logged_in'] = True
             session['uid'] = user["localId"]
@@ -68,12 +73,38 @@ def login():
         except Exception as Error:
             print(Error)
             error = 'Wrong username or password !!!'
-            return render_template('login.html',error=error)
+            return render_template('login.html', error=error)
     return render_template('login.html')
 
-@app.route('/manageStore')
+
+@app.route('/manageStore/', methods=['GET', 'POST'])
 @is_logged_in
-def manage_store():
+def manageStore():
+    if request.method == "POST":
+        storename = request.form['storename']
+        desc = request.form['desc']
+        time = request.form['time']
+        lat = request.form['lat']
+        lng = request.form['lng']
+        data = {
+            u"store": {
+                u"storename": str(storename),
+                u"desc": str(desc),
+                u"time": str(time),
+                u"location": {
+                    u"lat": float(lat),
+                    u"lng": float(lng)
+                }
+            }
+        }
+        try:
+            db.collection(u'users').document(session['uid']).set(data)
+            flash('Updatepass', 'success')
+            return render_template('manageStore.html')
+        except KeyError:
+            print(KeyError)
+            return render_template('manageStore.html')
+
     return render_template('manageStore.html')
 
 
@@ -86,9 +117,6 @@ def logout():
     return redirect(url_for('login'))
 
 
-
 if __name__ == '__main__':
-    app.secret_key='DDoS'
+    app.secret_key = 'DDoS'
     app.run(debug=True)
-
-
