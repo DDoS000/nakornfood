@@ -1,8 +1,18 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
-import pyrebase
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 from functools import wraps
+import pyrebase
 
 app = Flask(__name__)
+
+
+# Use a service account
+cred = credentials.Certificate('./static/nkornfood-firebase-adminsdk-jojhd-77cb198e46.json')
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
 
 fbConfig = {
   "apiKey": "AIzaSyAqrVYlAR6WWzU9qDAvhI8mxpGf_lCYcso",
@@ -61,6 +71,11 @@ def login():
             return render_template('login.html',error=error)
     return render_template('login.html')
 
+@app.route('/manage_store')
+@is_logged_in
+def manage_store():
+    if request.method == 'POST':
+    return render_template('manage_store.html')
 
 
 # Logout
