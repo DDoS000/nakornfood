@@ -71,11 +71,10 @@ def login():
             return render_template('login.html',error=error)
     return render_template('login.html')
 
-@app.route('/manage_store')
+@app.route('/manageStore')
 @is_logged_in
 def manage_store():
-    if request.method == 'POST':
-    return render_template('manage_store.html')
+    return render_template('manageStore.html')
 
 
 # Logout
