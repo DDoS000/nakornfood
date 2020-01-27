@@ -79,17 +79,40 @@ def login():
 @app.route('/manageStore/', methods=['GET', 'POST'])
 @is_logged_in
 def manageStore():
+    doc_ref = db.collection(u'users').document(session['uid'])
+    try:
+        doc = doc_ref.get()
+        docs = doc.to_dict()
+        storename = docs["store"]["storename"]
+        desc = docs["store"]["desc"]
+        Open = docs["store"]["time"]["open"]
+        close = docs["store"]["time"]["close"]
+        lat = docs["store"]["location"]["lng"]
+        lng = docs["store"]["location"]["lat"]
+    except KeyError:
+        print(u'No such document!')
+        storename = ""
+        desc = ""
+        Open = ""
+        close = ""
+        lat = ""
+        lng = ""
+        
     if request.method == "POST":
         storename = request.form['storename']
         desc = request.form['desc']
-        time = request.form['time']
+        Open = request.form['open']
+        close = request.form['close']
         lat = request.form['lat']
         lng = request.form['lng']
         data = {
             u"store": {
                 u"storename": str(storename),
                 u"desc": str(desc),
-                u"time": str(time),
+                u"time": {
+                    u"open": str(Open),
+                    u"close": str(close)
+                },
                 u"location": {
                     u"lat": float(lat),
                     u"lng": float(lng)
@@ -99,25 +122,11 @@ def manageStore():
         try:
             db.collection(u'users').document(session['uid']).set(data)
             flash('อัพเดทขูอมูลสําเร็จ', 'success')
-            return render_template('manageStore.html')
+            return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
         except KeyError:
             print(KeyError)
-            return render_template('manageStore.html')
-    else:
-        doc_ref = db.collection(u'users').document(session['uid'])
-        try:
-            doc = doc_ref.get()
-            docs = doc.to_dict()
-            storename = docs["store"]["storename"]
-            desc = docs["store"]["desc"]
-            time = docs["store"]["time"]
-            lat = docs["store"]["location"]["lng"]
-            lng = docs["store"]["location"]["lat"]
-            return render_template('manageStore.html')
-        except google.cloud.exceptions.NotFound:
-            print(u'No such document!')
-
-    return render_template('manageStore.html')
+            return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
+    return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
 
 
 @app.route('/manageFood')

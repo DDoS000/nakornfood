@@ -10,17 +10,15 @@
 
 <div class="container">
 
-  <form action="">
+  <form action="/manageStore/" method="POST">
     <div class="row">
       <div class="col-2">
       </div>
       <div class="col-5">
-        <form action="">
           <div class="form-group">
             <label for="exampleInputEmail1">ชื่อร้าน</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="storename">
+            <input type="text" class="form-control" id="exampleInputEmail1" name="storename" value="{{ storename }}">
           </div>
-        </form>
       </div>
     </div>
     <div class="row">
@@ -29,7 +27,7 @@
       <div class="col-5">
         <div class="form-group">
           <label for="exampleFormControlTextarea1">รายละเอียดร้าน</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" value="{{ desc }}" >{{ desc }}</textarea>
         </div>
       </div>
     </div>
@@ -38,11 +36,11 @@
       </div>
       <div class="col-2">
         <label for="exampleFormControlTextarea1">เวลาเปิด</label>
-        <input type="text" class="form-control" name="open">
+        <input type="text" class="form-control" name="open" value="{{ Open }}" >
       </div>
       <div class="col-2">
         <label for="exampleFormControlTextarea1">เวลาปิด</label>
-        <input type="text" class="form-control" name="close">
+        <input type="text" class="form-control" name="close" value="{{ close }}">
       </div>
     </div>
     <div class="row">
@@ -50,17 +48,17 @@
       </div>
       <div class="col-2">
         <label for="exampleFormControlTextarea1">ค่า lat</label>
-        <input type="text" class="form-control" name="lat">
+        <input type="text" class="form-control" name="lat" value="{{ lat }}" >
       </div>
       <div class="col-2">
         <label for="exampleFormControlTextarea1">ค่า long</label>
-        <input type="text" class="form-control" name="lng">
+        <input type="text" class="form-control" name="lng" value="{{ lng }}" >
       </div>
     </div>
     <div class="row">
       <div class="col-4"></div>
       <div class="col">
-        <button type="button" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
       </div>
     </div>
 
