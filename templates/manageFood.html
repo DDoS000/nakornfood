@@ -1,0 +1,50 @@
+{% extends 'layoutdb.html' %}
+
+
+
+{% block body %}
+
+
+<div class="container">
+    <form action="">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">ชื่ออาหาร</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="foodname">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">รายละเอียดอาหาร</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="foodedtail"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-5">
+                <label for="exampleFormControlTextarea1">ราคา</label>
+                <input type="text" class="form-control" name="foodprice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+
+{% endblock %}

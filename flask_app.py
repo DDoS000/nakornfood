@@ -120,6 +120,10 @@ def manageStore():
 
     return render_template('manageStore.html')
 
+@app.route('/manageFood')
+def manageFood():
+    return render_template('manageFood.html')
+
 
 # Logout
 @app.route('/logout')

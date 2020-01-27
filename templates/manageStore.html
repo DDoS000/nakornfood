@@ -1,87 +1,84 @@
 {% extends 'layoutdb.html' %} {% block head %}
 
-<style>
-  /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
-  #map {
-    height: 400px;
-    width: 100px;
-  }
 
-  /* Optional: Makes the sample page fill the window. */
-</style>
 
-{% endblock %} {% block body %}
+{% endblock %}
+
+
+{% block body %}
 
 
 <div class="container">
-  <div class="row">
-    <form class="col s12" action="/manageStore/" method="post">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="first_name" type="text" class="validate" name="storename">
-          <label for="first_name">ชื่อร้าน</label>
+
+  <form action="">
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col-5">
+        <form action="">
+          <div class="form-group">
+            <label for="exampleInputEmail1">ชื่อร้าน</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="storename">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col-5">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">รายละเอียดร้าน</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
         </div>
       </div>
-      <div class="row">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="first_name" type="text" class="validate" name="storename" />
-            <label for="first_name">ชื่อร้าน</label>
-
-          </div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="time" type="text" class="validate" name="time">
-          <label for="time">เวลาเปิด-ปิด</label>
-        </div>
-        <div class="row">
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea" name="desc"></textarea>
-              <label for="textarea1">รายละเอียดร้าน</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="time" type="email" class="validate" name="time" />
-            <label for="time">เวลาเปิด-ปิด</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="lat" type="text" class="validate" name="lat" />
-            <label for="lat">lat</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="log" type="text" class="validate" name="lng" />
-            <label for="log">log</label>
-          </div>
-        </div>
-        <button class="btn waves-effect waves-light" type="submit" style="font-family:'Prompt'">
-          บันทึกข้อมูล
-        </button>
-    </form>
+      <div class="col-2">
+        <label for="exampleFormControlTextarea1">เวลาเปิด</label>
+        <input type="text" class="form-control" name="open">
+      </div>
+      <div class="col-2">
+        <label for="exampleFormControlTextarea1">เวลาปิด</label>
+        <input type="text" class="form-control" name="close">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col-2">
+        <label for="exampleFormControlTextarea1">ค่า lat</label>
+        <input type="text" class="form-control" name="lat">
+      </div>
+      <div class="col-2">
+        <label for="exampleFormControlTextarea1">ค่า long</label>
+        <input type="text" class="form-control" name="lng">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
 
 
 
 
-    <!-- <div id="map"></div>
-<script>
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8
-        });
-    }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByxAxM_f64MaGCNie0y3joCJmUUA_TRZE&callback=initMap" async
-    defer></script> -->
 
 
 
-    {% endblock %}
+
+
+
+
+
+
+
+{% endblock %}
