@@ -68,6 +68,7 @@ def login():
             session['logged_in'] = True
             session['uid'] = user["localId"]
             session['email'] = user["email"]
+            session['storename'] = "นครอาหาร"
             flash('You are now logged in', 'success')
             return redirect(url_for('dashboard'))
         except Exception as Error:
