@@ -10,20 +10,19 @@ app = Flask(__name__)
 
 # Use a service account
 cred = credentials.Certificate(
-    './static/nkornfood-firebase-adminsdk-jojhd-77cb198e46.json')
+    './static/foodmanage-e63a1-firebase-adminsdk-jvifj-bda07ba578.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
 fbConfig = {
-    "apiKey": "AIzaSyAqrVYlAR6WWzU9qDAvhI8mxpGf_lCYcso",
-    "authDomain": "nkornfood.firebaseapp.com",
-    "databaseURL": "https://nkornfood.firebaseio.com",
-    "projectId": "nkornfood",
-    "storageBucket": "nkornfood.appspot.com",
-    "messagingSenderId": "94762099297",
-    "appId": "1:94762099297:web:ecde49d9f1d141233a8020",
-    "measurementId": "G-HZRPLJLFZK"
+    "apiKey": "AIzaSyAX5UAWd54SOE-YHO57YWOgMLlJ2bmgcn8",
+    "authDomain": "foodmanage-e63a1.firebaseapp.com",
+    "databaseURL": "https://foodmanage-e63a1.firebaseio.com",
+    "projectId": "foodmanage-e63a1",
+    "storageBucket": "foodmanage-e63a1.appspot.com",
+    "messagingSenderId": "1024309103110",
+    "appId": "1:1024309103110:web:5895822a1b04b8a9ffd187"
 }
 
 firebase = pyrebase.initialize_app(fbConfig)
@@ -31,6 +30,8 @@ auth = firebase.auth()
 database = firebase.database()
 
 # Check if user logged in
+
+
 def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -117,6 +118,7 @@ def manageStore():
             print(u'No such document!')
 
     return render_template('manageStore.html')
+
 
 @app.route('/manageFood')
 def manageFood():
