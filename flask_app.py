@@ -31,8 +31,6 @@ auth = firebase.auth()
 database = firebase.database()
 
 # Check if user logged in
-
-
 def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -130,7 +128,7 @@ def manageFood():
 @is_logged_in
 def logout():
     session.clear()
-    flash('You are now logged out', 'success')
+    flash('ออกจากระบบสําเร็จ', 'success')
     return redirect(url_for('login'))
 
 
