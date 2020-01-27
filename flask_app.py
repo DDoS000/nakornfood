@@ -89,16 +89,16 @@ def manageStore():
         desc = docs["store"]["desc"]
         Open = docs["store"]["time"]["open"]
         close = docs["store"]["time"]["close"]
-        lat = docs["store"]["location"]["lng"]
-        lng = docs["store"]["location"]["lat"]
+        lat = docs["store"]["location"]["lat"]
+        lng = docs["store"]["location"]["lng"]
     except Exception:
         print(u'No such document!')
         storename = ""
         desc = ""
         Open = ""
         close = ""
-        lat = ""
-        lng = ""
+        lat = 0
+        lng = 0
         
     if request.method == "POST":
         storename = request.form['storename']
