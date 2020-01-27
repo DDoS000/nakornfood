@@ -43,7 +43,6 @@ def is_logged_in(f):
     return wrap
 
 
-
 @app.route('/')
 def index():
     return render_template('login.html')
@@ -99,7 +98,7 @@ def manageStore():
         close = ""
         lat = 0
         lng = 0
-        
+
     if request.method == "POST":
         storename = request.form['storename']
         desc = request.form['desc']
@@ -124,15 +123,47 @@ def manageStore():
         try:
             db.collection(u'users').document(session['uid']).set(data)
             flash('อัพเดทข้อมูลสําเร็จ', 'success')
-            return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
+            return render_template('manageStore.html', storename=storename, desc=desc, Open=Open, close=close, lat=lat, lng=lng)
         except KeyError:
             print(KeyError)
-            return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
-    return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
+            return render_template('manageStore.html', storename=storename, desc=desc, Open=Open, close=close, lat=lat, lng=lng)
+    return render_template('manageStore.html', storename=storename, desc=desc, Open=Open, close=close, lat=lat, lng=lng)
 
 
-@app.route('/manageFood')
+@app.route('/manageFood/', methods=['GET', 'POST'])
 def manageFood():
+    doc_ref = db.collection(u'users').document(session['uid'])
+    try:
+        doc = doc_ref.get()
+        docs = doc.to_dict()
+        count = len(docs["manu"])
+        print(count)
+    except Exception:
+        print(u'No such document!')
+        count = 0
+
+    if request.method == "POST":
+        foodname = request.form['foodname']
+        detail = request.form['foodedtail']
+        price = request.form['foodprice']
+        url = request.form['url']
+        print("setdata")
+        data = {
+            u"manu": {
+                f"uid:{count}": {
+                    u"name": foodname,
+                    u"detail": detail,
+                    u"price": price,
+                    u"photourl": url,
+                }
+            },
+        }
+        try:
+            db.collection(u'users').document(session['uid']).set(data)
+            print("updata")
+            flash('อัพเดทข้อมูลสําเร็จ', 'success')
+        except KeyError:
+            print(KeyError)
     return render_template('manageFood.html')
 
 

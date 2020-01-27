@@ -6,14 +6,14 @@
 
 
 <div class="container">
-    <form action="">
+    <form action="/manageFood/"  method="POST">
         <div class="row">
             <div class="col-2">
             </div>
             <div class="col-5">
                 <div class="form-group">
                     <label for="exampleInputEmail1">ชื่ออาหาร</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="foodname">
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="foodname" required>
                 </div>
             </div>
         </div>
@@ -23,7 +23,8 @@
             <div class="col-5">
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">รายละเอียดอาหาร</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="foodedtail"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="foodedtail"
+                        required></textarea>
                 </div>
             </div>
         </div>
@@ -32,7 +33,7 @@
             </div>
             <div class="col-5">
                 <label for="exampleFormControlTextarea1">ราคา</label>
-                <input type="text" class="form-control" name="foodprice">
+                <input type="text" class="form-control" name="foodprice" required>
             </div>
         </div>
         <div class="row">
@@ -41,9 +42,12 @@
             <div class="col-5">
                 <label for="exampleFormControlTextarea1">รูปอาหาร</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
+                    <input type="file" name="file[]" class="custom-file-input" id="customFile" required>
+                    <input type="hidden" name="url" id="url">
                     <label class="custom-file-label" for="customFile">เลือกรูปอาหาร</label>
-                  </div>
+                    <button type="button" class="btn btn-primary" style="margin-top: 30px;"
+                        onclick="uploadimage()">อัพโหลด</button>
+                </div>
             </div>
         </div>
 
@@ -54,14 +58,54 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col">
-                <button type="button" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+                <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
             </div>
         </div>
-        
+
 
 
     </form>
 </div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAX5UAWd54SOE-YHO57YWOgMLlJ2bmgcn8",
+        authDomain: "foodmanage-e63a1.firebaseapp.com",
+        databaseURL: "https://foodmanage-e63a1.firebaseio.com",
+        projectId: "foodmanage-e63a1",
+        storageBucket: "foodmanage-e63a1.appspot.com",
+        messagingSenderId: "1024309103110",
+        appId: "1:1024309103110:web:5895822a1b04b8a9ffd187",
+        measurementId: "G-EE8CSBM4RZ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    function uploadimage() {
+        console.log("upload");
+        var storage = firebase.storage();
+        var file = document.getElementById("customFile").files[0];
+        var storageRef = storage.ref();
+        var thisref = storageRef.child(file.name).put(file);
+        thisref.on('state_changed', function (snapshot) {
+            
+        }, function (error) {
+            console.log(error);
+        }, function () {
+            // Handle successful uploads on complete
+            var downloadURL = thisref.snapshot.downloadURL;
+            alert("อัพโหลดรูปภาพสําเร็จ!!!")
+            document.getElementById("url").value = downloadURL;
+        });
+    }
+
+
+// Get a reference to the storage service, which is used to create references in your storage bucket
+
+</script>
 
 {% endblock %}
