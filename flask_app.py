@@ -43,6 +43,7 @@ def is_logged_in(f):
     return wrap
 
 
+
 @app.route('/')
 def index():
     return render_template('login.html')
@@ -89,7 +90,7 @@ def manageStore():
         close = docs["store"]["time"]["close"]
         lat = docs["store"]["location"]["lng"]
         lng = docs["store"]["location"]["lat"]
-    except KeyError:
+    except Exception:
         print(u'No such document!')
         storename = ""
         desc = ""
@@ -121,7 +122,7 @@ def manageStore():
         }
         try:
             db.collection(u'users').document(session['uid']).set(data)
-            flash('อัพเดทขูอมูลสําเร็จ', 'success')
+            flash('อัพเดทข้อมูลสําเร็จ', 'success')
             return render_template('manageStore.html', storename=storename, desc=desc, Open=Open,close=close , lat=lat, lng=lng)
         except KeyError:
             print(KeyError)
