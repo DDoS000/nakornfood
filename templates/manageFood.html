@@ -1,73 +1,204 @@
 {% extends 'layoutdb.html' %}
 
 
+{% block head %}
+
+
+<style>
+    img {
+        margin-top: 30px;
+        width: 400px;
+    }
+
+    .content {
+        margin-top: 150px;
+        font-size: 40px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    tr,
+    th,
+    td {
+        text-align: center;
+    }
+
+</style>
+{% endblock %}
+
+
 
 {% block body %}
 
 
-<div class="container">
-    <form action="/manageFood/"  method="POST">
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-5">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">ชื่ออาหาร</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="foodname" required>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-5">
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">รายละเอียดอาหาร</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="foodedtail"
-                        required></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-5">
-                <label for="exampleFormControlTextarea1">ราคา</label>
-                <input type="text" class="form-control" name="foodprice" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-5">
-                <label for="exampleFormControlTextarea1">รูปอาหาร</label>
-                <div class="custom-file">
-                    <input type="file" name="file[]" class="custom-file-input" id="customFile" required>
-                    <input type="hidden" name="url" id="url">
-                    <label class="custom-file-label" for="customFile">เลือกรูปอาหาร</label>
-                    <button type="button" class="btn btn-primary" style="margin-top: 30px;"
-                        onclick="uploadimage()">อัพโหลด</button>
-                </div>
-            </div>
-        </div>
 
 
 
-
-
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
-            </div>
-        </div>
-
-
-
-    </form>
+<div class="row justify-content-center">
+    <div class="col-4">
+        <label class="content">
+            เพิ่มเมนูอาหาร
+        </label>
+    </div>
+    <div class="col-4">
+        <img src="../static/images/undraw_experience_design_eq3j.svg">
+    </div>
 </div>
+
+
+
+
+<div class="row">
+    <div class="col-6">
+        <form action="/manageFood/" method="POST">
+            <div class="row ">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่ออาหาร</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="foodname" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">รายละเอียดอาหาร</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="foodedtail"
+                            required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="exampleFormControlTextarea1">ราคา</label>
+                    <input type="number" class="form-control" name="foodprice" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="exampleFormControlTextarea1">รูปอาหาร</label>
+                    <div class="custom-file">
+                        <input type="file" name="file[]" class="custom-file-input" id="customFile" required>
+                        <input type="hidden" name="url" id="url">
+                        <span class="custom-file-label" for="customFile" style="display: inline;">เลือกรูปอาหาร</label>
+
+                    </div>
+
+                    <!-- style="margin-top: 30px;" -->
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary" onclick="uploadimage()"
+                        style="margin-top: 30px;">อัพโหลดรูปภาพ</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col-6">
+        <img src="../static/images/Untitled-1.jpg" alt="แสดงตัวอย่างรูปภาพที่อัพโหลด" class="img-thumbnail"
+            style="float: center; width: 400px; height: 400px;">
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+        <div class="shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 50px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ลำดับ</th>
+                        <th scope="col">ชื่ออาหาร</th>
+                        <th scope="col">รายละเอียดอาหาร</th>
+                        <th scope="col">ราคา</th>
+                        <th scope="col">รูปอาหาร</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>5</td>
+                        <td>กะเพราหมูสับ</td>
+                        <td>35</td>
+                        <td>11:35 น. 25/1/63</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>4</td>
+                        <td>ข้าวผัดทะเล</td>
+                        <td>40</td>
+                        <td>11:10 น. 25/1/63</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>8</td>
+                        <td>ข้าวไข่ข้น</td>
+                        <td>40</td>
+                        <td>11:09 น. 25/1/63</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>4</td>
+                        <td>กะเพราหมูกรอบ</td>
+                        <td>35</td>
+                        <td>10:23 น. 25/1/63</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>10</td>
+                        <td>ส้มตำทะเล</td>
+                        <td>55</td>
+                        <td>10:20 น. 25/1/63</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>2</td>
+                        <td>ก๋วยเตี๋ยวหมู</td>
+                        <td>35</td>
+                        <td>10:15 น. 25/1/63</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>6</td>
+                        <td>ข้าวขาหมู</td>
+                        <td>30</td>
+                        <td>09:12 น. 25/1/63</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+
 
 
 <script>
@@ -92,7 +223,7 @@
         var storageRef = storage.ref();
         var thisref = storageRef.child(file.name).put(file);
         thisref.on('state_changed', function (snapshot) {
-            
+
         }, function (error) {
             console.log(error);
         }, function () {

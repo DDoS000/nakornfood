@@ -2,9 +2,31 @@
 
 <style type="text/css">
   #map {
-    height: 800px;
-    width: 60%;
+    height: 500px;
+    width: 500px;
+    margin-top: 60px;
   }
+
+  form{
+    margin-top: 60px;
+    border-radius: 30px;
+    height: 500px;
+  }
+
+  .shadow-lg{
+    border-radius: 20px !important;
+
+  }
+
+  img {
+        margin-top: 30px;
+        width: 400px;
+    }
+
+    .content {
+        margin-top: 150px;
+        font-size: 40px;
+    }
 </style>
 
 {% endblock %}
@@ -13,62 +35,94 @@
 {% block body %}
 
 
-<div class="container">
-  <form action="/manageStore/" method="POST">
-    <div class="row">
-      <div class="col-2">
-      </div>
-      <div class="col-5">
-        <div class="form-group">
-          <label for="exampleInputEmail1">ชื่อร้าน</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" name="storename" value="{{ storename }}">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-2">
-      </div>
-      <div class="col-5">
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">รายละเอียดร้าน</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"
-            value="{{ desc }}">{{ desc }}</textarea>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-2">
-      </div>
-      <div class="col-2">
-        <label for="exampleFormControlTextarea1">เวลาเปิด</label>
-        <input type="text" class="form-control" name="open" value="{{ Open }}">
-      </div>
-      <div class="col-2">
-        <label for="exampleFormControlTextarea1">เวลาปิด</label>
-        <input type="text" class="form-control" name="close" value="{{ close }}">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-2">
-      </div>
-      <div class="col-2">
-        <label for="exampleFormControlTextarea1">ค่า lat</label>
-        <input type="text" class="form-control" id="lat" name="lat">
-      </div>
-      <div class="col-2">
-        <label for="exampleFormControlTextarea1">ค่า long</label>
-        <input type="text" class="form-control" id="lng" name="lng">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4"></div>
-      <div class="col">
-        <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
-      </div>
-    </div>
-    <div id="map"></div>
-  </form>
+
+
+<div class="row justify-content-center">
+  <div class="col-4">
+      <label class="content">
+          แก้ไขข้อมูลร้าน
+      </label>
+  </div>
+  <div class="col-4">
+      <img src="../static/images/undraw_task_31wc.svg">
+  </div>
 </div>
+
+
+
+<div class="row">
+  <div class="col-6">
+    <form action="/manageStore/" method="POST" class="shadow-lg p-3 mb-5 bg-white rounded">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleInputEmail1">ชื่อร้าน</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="storename" value="{{ storename }}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">รายละเอียดร้าน</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"
+              value="{{ desc }}">{{ desc }}</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5">
+          <label for="exampleFormControlTextarea1">เวลาเปิด</label>
+          <input type="text" class="form-control" name="open" value="{{ Open }}">
+        </div>
+        <div class="col-5">
+          <label for="exampleFormControlTextarea1">เวลาปิด</label>
+          <input type="text" class="form-control" name="close" value="{{ close }}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5">
+          <label for="exampleFormControlTextarea1">ค่า lat</label>
+          <input type="text" class="form-control" id="lat" name="lat">
+        </div>
+        <div class="col-5">
+          <label for="exampleFormControlTextarea1">ค่า long</label>
+          <input type="text" class="form-control" id="lng" name="lng">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="col-6"  >
+    <div id="map" class="shadow-lg p-3 mb-5 bg-white rounded"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script>
