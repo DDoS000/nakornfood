@@ -29,22 +29,29 @@ firebase = pyrebase.initialize_app(fbConfig)
 auth = firebase.auth()
 database = firebase.database()
 
+
+def GetDataUser(uid):
+    doc_ref = db.collection(u'users').document(uid)
+    doc = doc_ref.get()
+    docs = doc.to_dict()
+    return docs
+
+
 # Check if user logged in
-
-
 def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
-            flash('Only Member, Please login !!!', 'danger')
             return redirect(url_for('login'))
     return wrap
 
 
 @app.route('/')
 def index():
+    if 'logged_in' in session:
+        return redirect(url_for('dashboard'))
     return render_template('login.html')
 
 
@@ -57,6 +64,8 @@ def dashboard():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'logged_in' in session:
+        return redirect(url_for('dashboard'))
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -64,12 +73,18 @@ def login():
         try:
             user = auth.sign_in_with_email_and_password(email, password)
             # Passed
-            session['logged_in'] = True
-            session['uid'] = user["localId"]
-            session['email'] = user["email"]
-            session['storename'] = "นครอาหาร"
-            flash('You are now logged in', 'success')
-            return redirect(url_for('dashboard'))
+            docs = GetDataUser(user["localId"])
+            print(docs)
+            if docs["acc"]["manage"] == True:
+                session['logged_in'] = True
+                session['uid'] = user["localId"]
+                session['email'] = user["email"]
+                session['storename'] = docs["store"]["storename"]
+                flash('เข้าสู้ระบบสําเร็จ', 'success')
+                return redirect(url_for('dashboard'))
+            else:
+                flash('คุณไม่มีสิทธิ์เข้าถึง', 'success')
+                return redirect(url_for('dashboard'))
         except Exception as Error:
             print(Error)
             error = 'อีเมลล์หรือรหัสผ่านไม่ถูกต้อง'
@@ -80,10 +95,9 @@ def login():
 @app.route('/manageStore/', methods=['GET', 'POST'])
 @is_logged_in
 def manageStore():
-    doc_ref = db.collection(u'users').document(session['uid'])
+    docs = GetDataUser(session['uid'])
     try:
-        doc = doc_ref.get()
-        docs = doc.to_dict()
+        session['storename'] = docs["store"]["storename"]
         storename = docs["store"]["storename"]
         desc = docs["store"]["desc"]
         Open = docs["store"]["time"]["open"]
@@ -120,8 +134,9 @@ def manageStore():
                 }
             }
         }
+        session['storename'] = storename
         try:
-            db.collection(u'users').document(session['uid']).set(data)
+            db.collection(u'users').document(session['uid']).update(data)
             flash('อัพเดทข้อมูลสําเร็จ', 'success')
             return render_template('manageStore.html', storename=storename, desc=desc, Open=Open, close=close, lat=lat, lng=lng)
         except KeyError:
@@ -132,11 +147,9 @@ def manageStore():
 
 @app.route('/manageFood/', methods=['GET', 'POST'])
 def manageFood():
-    doc_ref = db.collection(u'users').document(session['uid'])
     try:
-        doc = doc_ref.get()
-        docs = doc.to_dict()
-        count = len(docs["manu"])
+        docs = GetDataUser(session['uid'])
+        count = (docs["manu"]["count"]) + 1
         print(count)
     except Exception:
         print(u'No such document!')
@@ -150,6 +163,7 @@ def manageFood():
         print("setdata")
         data = {
             u"manu": {
+                u"count": count,
                 f"uid:{count}": {
                     u"name": foodname,
                     u"detail": detail,
@@ -159,7 +173,7 @@ def manageFood():
             },
         }
         try:
-            db.collection(u'users').document(session['uid']).set(data)
+            db.collection(u'users').document(session['uid']).update(data)
             print("updata")
             flash('อัพเดทข้อมูลสําเร็จ', 'success')
         except KeyError:
