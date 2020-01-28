@@ -167,6 +167,11 @@ def manageFood():
     return render_template('manageFood.html')
 
 
+@app.route('/manageSeat')
+def manageSeat():
+    return render_template('manageSeat.html')
+
+
 # Logout
 @app.route('/logout')
 @is_logged_in
