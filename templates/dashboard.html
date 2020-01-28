@@ -51,9 +51,12 @@
 
   tr,
   th,
-  td {
+  td,
+  tbody {
     text-align: center;
   }
+
+
 
   .bg-img {
     width: 50%;
@@ -86,7 +89,7 @@
   }
 
   .chartWrap {
-    float: right ;
+    float: right;
     position: relative;
     width: 25%;
     background: white;
@@ -115,10 +118,7 @@
 
 
 <div class="row">
-  <div class="col-2">
-  </div>
-
-  <div class="col-3">
+  <div class="col-4">
     <div class="card card-1">
       <div class="upper-card">
         <p>รายได้วันนี้</p>
@@ -129,7 +129,7 @@
       </div>
     </div>
   </div>
-  <div class="col-3">
+  <div class="col-4">
     <div class="card card-1">
       <div class="upper-card">
         <p>ยอดผู้ใช้บริการ</p>
@@ -140,7 +140,7 @@
       </div>
     </div>
   </div>
-  <div class="col-3">
+  <div class="col-4">
     <div class="card card-1">
       <div class="upper-card">
         <p>ยอดการสั่งอาหาร</p>
@@ -156,120 +156,115 @@
 
 
 
-<div class="row">
-  <div class="col-3"></div>
-  <div class="col-3"></div>
-
-
-</div>
 
 
 
-  <body ng-app="app">
-    <h2>Highcharts Example</h2>
-    <div class="app-wrapper" ng-controller="ctrl">
-      <div class="chartWrap">
-        <div id="onFeedChart"></div>
-      </div>
-      <div class="chartWrap">
-        <div id="photoUploadChart"></div>
-      </div>
+
+<body ng-app="app">
+  <h2>Highcharts Example</h2>
+  <div class="app-wrapper" ng-controller="ctrl">
+    <div class="chartWrap">
+      <div id="onFeedChart"></div>
     </div>
-  </body>
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-3">
-    <label class="head-table">รายการสั่งอาหาร</label>
+    <div class="chartWrap">
+      <div id="photoUploadChart"></div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-2">
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row">
+  <div class="col">
+    
   </div>
-  <div class="col-9">
-    <div class="shadow-sm p-3 mb-5 bg-white rounded">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">ลำดับ</th>
-            <th scope="col">โต๊ะที่</th>
-            <th scope="col">อาหารที่สั่ง</th>
-            <th scope="col">ราคา</th>
-            <th scope="col">เวลา/วันที่</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>5</td>
-            <td>กะเพราหมูสับ</td>
-            <td>35</td>
-            <td>11:35 น. 25/1/63</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>4</td>
-            <td>ข้าวผัดทะเล</td>
-            <td>40</td>
-            <td>11:10 น. 25/1/63</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>8</td>
-            <td>ข้าวไข่ข้น</td>
-            <td>40</td>
-            <td>11:09 น. 25/1/63</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>4</td>
-            <td>กะเพราหมูกรอบ</td>
-            <td>35</td>
-            <td>10:23 น. 25/1/63</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>10</td>
-            <td>ส้มตำทะเล</td>
-            <td>55</td>
-            <td>10:20 น. 25/1/63</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>2</td>
-            <td>ก๋วยเตี๋ยวหมู</td>
-            <td>35</td>
-            <td>10:15 น. 25/1/63</td>
-          </tr>
-          <tr>
-            <th scope="row">7</th>
-            <td>6</td>
-            <td>ข้าวขาหมู</td>
-            <td>30</td>
-            <td>09:12 น. 25/1/63</td>
-          </tr>
-        </tbody>
-      </table>
+</div> -->
+<div class="container">
+  <label class="head-table">รายการสั่งอาหาร</label>
+  <div class="row">
+    <div class="col">
+      <div class="shadow-sm p-3 mb-5 bg-white rounded">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ลำดับ</th>
+              <th scope="col">โต๊ะที่</th>
+              <th scope="col">อาหารที่สั่ง</th>
+              <th scope="col">ราคา</th>
+              <th scope="col">เวลา/วันที่</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>5</td>
+              <td>กะเพราหมูสับ</td>
+              <td>35</td>
+              <td>11:35 น. 25/1/63</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>4</td>
+              <td>ข้าวผัดทะเล</td>
+              <td>40</td>
+              <td>11:10 น. 25/1/63</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>8</td>
+              <td>ข้าวไข่ข้น</td>
+              <td>40</td>
+              <td>11:09 น. 25/1/63</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>4</td>
+              <td>กะเพราหมูกรอบ</td>
+              <td>35</td>
+              <td>10:23 น. 25/1/63</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>10</td>
+              <td>ส้มตำทะเล</td>
+              <td>55</td>
+              <td>10:20 น. 25/1/63</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>2</td>
+              <td>ก๋วยเตี๋ยวหมู</td>
+              <td>35</td>
+              <td>10:15 น. 25/1/63</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>6</td>
+              <td>ข้าวขาหมู</td>
+              <td>30</td>
+              <td>09:12 น. 25/1/63</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

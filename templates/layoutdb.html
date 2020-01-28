@@ -16,10 +16,16 @@
 </head>
 
 <body>
-    {% include 'includes/navbar.html' %}
-  <div class="container">
-    {% block body %}{% endblock %}
+
+  <div class="row">
+    <div class="col-2">
+      {% include 'includes/navbar.html' %}
+    </div>
+    <div class="col-9">
+      {% block body %}{% endblock %}
+    </div>
   </div>
+
 </body>
 
 </html>
