@@ -75,6 +75,7 @@ def login():
             # Passed
             docs = GetDataUser(user["localId"])
             print(docs)
+            print(docs["acc"]["manage"])
             if docs["acc"]["manage"] == True:
                 session['logged_in'] = True
                 session['uid'] = user["localId"]
@@ -147,13 +148,13 @@ def manageStore():
 
 @app.route('/manageFood/', methods=['GET', 'POST'])
 def manageFood():
+    docs = GetDataUser(session['uid'])
     try:
-        docs = GetDataUser(session['uid'])
-        count = (docs["manu"]["count"]) + 1
-        print(count)
-    except Exception:
-        print(u'No such document!')
-        count = 0
+        foods = docs["manu"]
+        print("getfoodspass")
+    except KeyError:
+        print("getfoodsError")
+        foods = ""
 
     if request.method == "POST":
         foodname = request.form['foodname']
@@ -162,23 +163,19 @@ def manageFood():
         url = request.form['url']
         print("setdata")
         data = {
-            u"manu": {
-                u"count": count,
-                f"uid:{count}": {
-                    u"name": foodname,
-                    u"detail": detail,
-                    u"price": price,
-                    u"photourl": url,
-                }
-            },
+            u"name": foodname,
+            u"detail": detail,
+            u"price": price,
+            u"photourl": url
         }
         try:
-            db.collection(u'users').document(session['uid']).update(data)
+            db.collection(u'users').document(session['uid']).update(
+                {u'manu': firestore.ArrayUnion([data])})
             print("updata")
             flash('อัพเดทข้อมูลสําเร็จ', 'success')
         except KeyError:
             print(KeyError)
-    return render_template('manageFood.html')
+    return render_template('manageFood.html', foods=foods)
 
 
 @app.route('/manageSeat')
