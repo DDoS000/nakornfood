@@ -3,24 +3,52 @@
 {% block head %}
 
 <style>
-    .color-status-empty{
+    .color-status-empty {
         background-color: #4cd137;
         text-align: center;
         color: #ffffff;
         height: 40px;
         font-family: 'Prompt';
+        border-radius: 10px 10px 0px 0px;
     }
 
-    .color-status-Notempty{
-        background-color: #d63031 ;
+    .color-status-Notempty {
+        background-color: #d63031;
+        text-align: center;
+        color: #ffffff;
+        height: 40px;
+        font-family: 'Prompt';
+        border-radius: 10px 10px 0px 0px;
     }
 
-    label{
+    label {
         margin-top: 10px;
     }
 
-    .card{
-        margin-top: 50px;
+    .card {
+        margin-top: 30px;
+        display: inline-block;
+        width: 260px !important;
+        border-radius: 10px;
+    }
+
+    img {
+        margin-top: 60px;
+        width: 300px;
+    }
+
+    .content {
+        margin-top: 150px;
+        font-size: 40px;
+    }
+
+    .dot {
+        height: 20px;
+        width: 20px;
+        background-color: #4cd137;
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 20px;
     }
 </style>
 
@@ -31,6 +59,39 @@
 
 {% block body %}
 
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <label class="content">
+            จัดการที่นั่งในร้าน
+        </label>
+    </div>
+    <div class="col-4">
+        <img src="../static/images/undraw_researching_22gp.svg">
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-2">
+        <div class="dot"></div>
+        <span>ที่นั่งว่าง</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-2">
+        <div class="dot" style="background-color: #ee5253;"></div>
+        <span>ที่นั่งไม่ว่าง</span>
+    </div>
+</div>
+
+
+
 <div class="row">
     <div class="col-2"></div>
     <div class="col-3">
@@ -39,13 +100,121 @@
                 <label>โต๊ะที่ 1</label>
             </div>
             <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
+                <p class="card-text">เวลาที่จองโต๊ะ - </p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-empty">
+                <label>โต๊ะที่ 2</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ - </p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-Notempty">
+                <label>โต๊ะที่ 3</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ 11:10 น. 25/1/63</p>
+                <p class="card-text">จำนวน 5 คน </p>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-Notempty">
+                <label>โต๊ะที่ 4</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ 11:35 น. 25/1/63 </p>
+                <p class="card-text">จำนวน 3 คน </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-empty">
+                <label>โต๊ะที่ 5</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ - </p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-empty">
+                <label>โต๊ะที่ 6</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ -</p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-empty">
+                <label>โต๊ะที่ 7</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ - </p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-empty">
+                <label>โต๊ะที่ 8</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ - </p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+            <div class="color-status-empty">
+                <label>โต๊ะที่ 9</label>
+            </div>
+            <div class="card-body">
+                <p class="card-text">เวลาที่จองโต๊ะ -</p>
+                <p class="card-text">จำนวน - คน </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
 
 
 
