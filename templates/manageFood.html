@@ -83,11 +83,7 @@
                         <input type="file" name="file[]" class="custom-file-input" id="customFile" required>
                         <input type="hidden" name="url" id="url">
                         <span class="custom-file-label" for="customFile" style="display: inline;">เลือกรูปอาหาร</label>
-
                     </div>
-
-                    <!-- style="margin-top: 30px;" -->
-
                 </div>
             </div>
             <div class="row">
@@ -101,8 +97,6 @@
             </div>
         </form>
     </div>
-
-
     <div class="col-6">
         <img src="../static/images/Untitled-1.jpg" alt="แสดงตัวอย่างรูปภาพที่อัพโหลด" class="img-thumbnail"
             style="float: center; width: 400px; height: 400px;">
@@ -117,69 +111,28 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ลำดับ</th>
+                        <th scope="col">รูปอาหาร</th>
                         <th scope="col">ชื่ออาหาร</th>
                         <th scope="col">รายละเอียดอาหาร</th>
                         <th scope="col">ราคา</th>
-                        <th scope="col">รูปอาหาร</th>
+                        <th scope="col">ราคา</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in foods %}
                     <tr>
-                        <th scope="row">1</th>
-                        <td>5</td>
-                        <td>กะเพราหมูสับ</td>
-                        <td>35</td>
-                        <td>11:35 น. 25/1/63</td>
+                        <td><img src="{{i.photourl}}" ></td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.detail}}</td>
+                        <td>{{i.price}}</td>
+                        <td>{{i.price}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>4</td>
-                        <td>ข้าวผัดทะเล</td>
-                        <td>40</td>
-                        <td>11:10 น. 25/1/63</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>8</td>
-                        <td>ข้าวไข่ข้น</td>
-                        <td>40</td>
-                        <td>11:09 น. 25/1/63</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>4</td>
-                        <td>กะเพราหมูกรอบ</td>
-                        <td>35</td>
-                        <td>10:23 น. 25/1/63</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>10</td>
-                        <td>ส้มตำทะเล</td>
-                        <td>55</td>
-                        <td>10:20 น. 25/1/63</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>2</td>
-                        <td>ก๋วยเตี๋ยวหมู</td>
-                        <td>35</td>
-                        <td>10:15 น. 25/1/63</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>6</td>
-                        <td>ข้าวขาหมู</td>
-                        <td>30</td>
-                        <td>09:12 น. 25/1/63</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 
 
 

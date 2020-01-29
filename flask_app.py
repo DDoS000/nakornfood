@@ -149,13 +149,6 @@ def manageStore():
 @app.route('/manageFood/', methods=['GET', 'POST'])
 def manageFood():
     docs = GetDataUser(session['uid'])
-    try:
-        foods = docs["manu"]
-        print("getfoodspass")
-    except KeyError:
-        print("getfoodsError")
-        foods = ""
-
     if request.method == "POST":
         foodname = request.form['foodname']
         detail = request.form['foodedtail']
@@ -170,11 +163,17 @@ def manageFood():
         }
         try:
             db.collection(u'users').document(session['uid']).update(
-                {u'manu': firestore.ArrayUnion([data])})
-            print("updata")
-            flash('อัพเดทข้อมูลสําเร็จ', 'success')
+                {u'menu': firestore.ArrayUnion([data])})
         except KeyError:
             print(KeyError)
+
+    try:
+        foods = docs["menu"]
+        print("getfoodspass")
+    except KeyError:
+        print("getfoodsError")
+        foods = [{'photourl': '', 'name': 'ยังไม่มีข้อมูลในระบบ', 'detail': 'ยังไม่มีข้อมูลในระบบ', 'price': 'ยังไม่มีข้อมูลในระบบ'}]
+    
     return render_template('manageFood.html', foods=foods)
 
 
