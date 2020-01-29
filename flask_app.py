@@ -37,6 +37,8 @@ fbConfig = {
     "appId": "1:1024309103110:web:5895822a1b04b8a9ffd187"
 }
 
+app.secret_key = '802a10465059f4276f654ab46b8033a2'
+
 firebase = pyrebase.initialize_app(fbConfig)
 auth = firebase.auth()
 database = firebase.database()
@@ -202,8 +204,6 @@ def logout():
     flash('ออกจากระบบสําเร็จ', 'success')
     return redirect(url_for('login'))
 
-
-    app.secret_key = '802a10465059f4276f654ab46b8033a2'
 if __name__ == '__main__':
     app.secret_key = '802a10465059f4276f654ab46b8033a2'
     app.config['SESSION_TYPE'] = 'filesystem'
