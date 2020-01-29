@@ -161,6 +161,7 @@ def manageStore():
 
 
 @app.route('/manageFood/', methods=['GET', 'POST'])
+@is_logged_in
 def manageFood():
     docs = GetDataUser(session['uid'])
     if request.method == "POST":
@@ -192,8 +193,13 @@ def manageFood():
 
 
 @app.route('/manageSeat')
+@is_logged_in
 def manageSeat():
     return render_template('manageSeat.html')
+
+@app.route('/ar')
+def ar():
+    return render_template('ar.html')
 
 
 # Logout
