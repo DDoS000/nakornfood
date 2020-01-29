@@ -126,7 +126,7 @@
 
 
 
- /**
+  /**
  * 1. The `reverse` animation direction plays the animation backwards
  *    which makes it start at the stroke offset 100 which means displaying
  *    no stroke at all and animating it to the value defined in the SVG
@@ -137,13 +137,16 @@
  *    and Edge, use the transform attribute directly on the SVG element as a
  * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
  */
-.circle-chart__circle {
-  animation: circle-chart-fill 2s reverse; /* 1 */ 
-  transform: rotate(-90deg); /* 2, 3 */
-  transform-origin: center; /* 4 */
-}
+  .circle-chart__circle {
+    animation: circle-chart-fill 2s reverse;
+    /* 1 */
+    transform: rotate(-90deg);
+    /* 2, 3 */
+    transform-origin: center;
+    /* 4 */
+  }
 
-/**
+  /**
  * 1. Rotate by -90 degree to make the starting point of the
  *    stroke the top of the circle.
  * 2. Scaling mirrors the circle to make the stroke move right
@@ -152,59 +155,204 @@
  *    and Edge, use the transform attribute directly on the SVG element as a
  * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
  */
-.circle-chart__circle--negative {
-  transform: rotate(-90deg) scale(1,-1); /* 1, 2, 3 */
-}
-
-.circle-chart__info {
-  animation: circle-chart-appear 2s forwards;
-  opacity: 0;
-  transform: translateY(0.3em);
-}
-
-@keyframes circle-chart-fill {
-  to { stroke-dasharray: 0 100; }
-}
-
-@keyframes circle-chart-appear {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .circle-chart__circle--negative {
+    transform: rotate(-90deg) scale(1, -1);
+    /* 1, 2, 3 */
   }
-}
 
-/* Layout styles only, not needed for functionality */
+  .circle-chart__info {
+    animation: circle-chart-appear 2s forwards;
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+
+  @keyframes circle-chart-fill {
+    to {
+      stroke-dasharray: 0 100;
+    }
+  }
+
+  @keyframes circle-chart-appear {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Layout styles only, not needed for functionality */
 
 
-.grid {
-  display: grid;
-  grid-column-gap: 1em;
-  grid-row-gap: 1em;
-  grid-template-columns: repeat(1, 1fr);
-  margin-top: 30px;
-  margin-bottom: 40px;
-}
-
-@media (min-width: 31em) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 30px;
+    margin-bottom: 40px;
   }
-}
+
+  @media (min-width: 31em) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* graph/ */
 
 
+  @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
 
+  .credit {
+    width: 560px;
+    margin: 9em auto 3em auto;
+    text-align: center;
+    font-size: 0.75em;
+  }
 
+  a {
+    text-decoration: none;
+    color: #21A6EE;
+  }
 
+  .ion-social-dribbble {
+    color: #EC4989;
+  }
 
+  .chart {
+    position: relative;
+    width: 560px;
+    height: 260px;
+    margin: 3em auto;
+    background-image: repeating-radial-gradient(center center, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 2px, transparent 2px, transparent 100%);
+    background-size: 29px 29px;
+    background-position: -11px 11px;
+  }
 
-/* graph/ */
+  .chart::before,
+  .chart::after {
+    display: inline-block;
+    font-size: 0.875em;
+  }
 
+  .chart::before {
+    display: inline-block;
+    position: absolute;
+    left: -3.5em;
+    top: -5px;
+    content: "$4k \a$3k \a$2k \a$1k \a 0";
+    white-space: pre;
+    height: 100%;
+    line-height: 4.2;
+    text-align: right;
+  }
 
+  .chart::after {
+    content: "07:00น 21:00น";
+    width: 110%;
+    margin-left: -5%;
+    word-spacing: 36.5em;
+    padding-top: 0.5em;
+  }
 
+  .dataset {
+    fill-opacity: 0.8;
+    -webkit-filter: url(#dropshadow);
+    filter: url(#dropshadow);
+  }
 
+  #dataset-1 {
+    fill: #50E3C2;
+  }
 
+  #dataset-2 {
+    fill: #21A6EE;
+  }
 
+  #dataset-3 {
+    fill: #807CCC;
+  }
+
+  .chart button {
+    position: relative;
+    top: -0.75em;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    color: #384051;
+    border-radius: 5px;
+    padding: 0.25em 1em;
+    font-size: 1em;
+    float: right;
+    cursor: pointer;
+  }
+
+  .chart button:focus {
+    outline: none;
+  }
+
+  @-webkit-keyframes raise {
+    0% {
+      -webkit-transform: scaleY(0.01);
+      transform: scaleY(0.01);
+    }
+
+    75% {
+      -webkit-transform: scaleY(1.1);
+      transform: scaleY(1.1);
+    }
+
+    100% {
+      -webkit-transform: scaleY(1);
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes raise {
+    0% {
+      -webkit-transform: scaleY(0.01);
+      transform: scaleY(0.01);
+    }
+
+    75% {
+      -webkit-transform: scaleY(1.1);
+      transform: scaleY(1.1);
+    }
+
+    100% {
+      -webkit-transform: scaleY(1);
+      transform: scaleY(1);
+    }
+  }
+
+  .dataset {
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    -webkit-transform: scaleY(0.01);
+    transform: scaleY(0.01);
+    opacity: 0.5;
+  }
+
+  .loaded .dataset {
+    opacity: 1;
+    -webkit-animation: raise 0.5s ease 0.2s forwards;
+    animation: raise 0.5s ease 0.2s forwards;
+  }
+
+  .loaded #dataset-1 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+
+  .loaded #dataset-2 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+  }
+
+  .loaded #dataset-3 {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+  }
 </style>
 
 
@@ -272,29 +420,40 @@
 
 
 
-<div class="row" >
+<div class="row">
   <div class="col-6">
     <div class="grid">
       <section>
         <h4>อัตราการเจริญเติบโต</h4>
-        <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-          <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
-          <circle class="circle-chart__circle" stroke="#00acc1" stroke-width="2" stroke-dasharray="30,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+        <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200"
+          xmlns="http://www.w3.org/2000/svg">
+          <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431"
+            cy="16.91549431" r="15.91549431" />
+          <circle class="circle-chart__circle" stroke="#00acc1" stroke-width="2" stroke-dasharray="30,100"
+            stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
           <g class="circle-chart__info">
-            <text class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">30%</text>
-            <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="2">ในระยะเวลา 1 เดือน</text>
+            <text class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central"
+              text-anchor="middle" font-size="8">30%</text>
+            <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central"
+              text-anchor="middle" font-size="2">ในระยะเวลา 1 เดือน</text>
           </g>
         </svg>
       </section>
-    
+
       <section>
         <h4 style="margin-left: 25px;">อัตราการขาดทุน</h4>
-        <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-          <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
-          <circle class="circle-chart__circle circle-chart__circle--negative" stroke="#00acc1" stroke-width="2" stroke-dasharray="10,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+        <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200"
+          xmlns="http://www.w3.org/2000/svg">
+          <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431"
+            cy="16.91549431" r="15.91549431" />
+          <circle class="circle-chart__circle circle-chart__circle--negative" stroke="#00acc1" stroke-width="2"
+            stroke-dasharray="10,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431"
+            r="15.91549431" />
           <g class="circle-chart__info">
-            <text class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">-10%</text>
-            <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central" text-anchor="middle" font-size="2">ในระยะเวลา 1 เดือน</text>
+            <text class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central"
+              text-anchor="middle" font-size="8">-10%</text>
+            <text class="circle-chart__subline" x="16.91549431" y="20.5" alignment-baseline="central"
+              text-anchor="middle" font-size="2">ในระยะเวลา 1 เดือน</text>
           </g>
         </svg>
       </section>
@@ -302,7 +461,37 @@
   </div>
 
   <div class="col-6">
-    
+    <div class='chart'>
+      <button class='js-do-it-again'>
+        <span class='ion-loop'></span>
+      </button>
+      <svg viewbox='0 0 560 260'>
+        <defs>
+          <filter id='dropshadow'>
+            <feGaussianBlur in='SourceAlpha' stdDeviation='3'></feGaussianBlur>
+            <feOffset dx='0' dy='0' result='offsetblur'></feOffset>
+            <feComponentTransfer>
+              <feFuncA slope='0.2' type='linear'></feFuncA>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode></feMergeNode>
+              <feMergeNode in='SourceGraphic'></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+        <g class='datasets'>
+          <path class='dataset'
+            d='M0,260 C0,260 4,252 7,252 C66,252 90,102 139,102 C188,102 205,135 252,135 C299,135 309,89 330,89 C350,89 366,122 404,122 C442,122 431,98 451,98 C470,98 499,213 560,260 L0,259 Z'
+            id='dataset-3'></path>
+          <path class='dataset'
+            d='M0,260 C35,254 63,124 88,124 C114,124 148,163 219,163 C290,163 315,100 359,100 C402,100 520,244 560,259 C560,259 0,259 0,260 Z'
+            id='dataset-2'></path>
+          <path class='dataset'
+            d='M0,260 C0,260 22,199 64,199 C105,199 112,144 154,144 C195,144 194,126 216,126 C237,126 263,184 314,184 C365,183 386,128 434,129 C483,130 511,240 560,260 L0,260 Z'
+            id='dataset-1'></path>
+        </g>
+      </svg>
+    </div>
   </div>
 </div>
 
@@ -418,6 +607,27 @@
 
 
 <script>
+  (function () {
+    var load_chart;
+
+    load_chart = function () {
+      $("body").removeClass("loaded");
+      return setTimeout(function () {
+        return $("body").addClass("loaded");
+      }, 500);
+    };
+
+    $(".js-do-it-again").on("click", function () {
+      return load_chart();
+    });
+
+    load_chart();
+
+  }).call(this);
+
+
+  //# sourceURL=coffeescript
+
   var app = angular.module("app", ["ui.bootstrap"]);
 
   app.controller("ctrl", function ($scope, $timeout) {
