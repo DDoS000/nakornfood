@@ -203,8 +203,9 @@ def logout():
     return redirect(url_for('login'))
 
 
+    app.secret_key = '802a10465059f4276f654ab46b8033a2'
 if __name__ == '__main__':
-    app.secret_key = 'super secret key'
+    app.secret_key = '802a10465059f4276f654ab46b8033a2'
     app.config['SESSION_TYPE'] = 'filesystem'
 
     app.run(debug=True)
