@@ -2,17 +2,18 @@
 
 <style>
   body {
-    background: fefefe;
+    background: #fefefe;
   }
 
   .card {
     background: #fff;
     border-radius: 15px;
     display: inline-block;
-    height: 110px;
+    height: 170px;
     margin: 2rem;
     position: relative;
-    width: 200px;
+    width: 300px;
+    margin-top: 80px;
   }
 
   .card-1 {
@@ -36,17 +37,23 @@
     margin: 0;
   }
 
+
+
+
+
   img {
-    margin-top: 10px;
+    margin-top: 25px;
     margin-left: 10px;
-    width: 55px;
+    width: 100px;
   }
 
   label {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 600;
     text-align: center;
-    margin-left: 10px;
+    margin-left: 40px;
+    margin-top: 45px;
+    position: absolute;
   }
 
   tr,
@@ -222,7 +229,7 @@
 
   .chart {
     position: relative;
-    width: 560px;
+    width: 530px;
     height: 260px;
     margin: 3em auto;
     background-image: repeating-radial-gradient(center center, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 2px, transparent 2px, transparent 100%);
@@ -241,7 +248,7 @@
     position: absolute;
     left: -3.5em;
     top: -5px;
-    content: "$4k \a$3k \a$2k \a$1k \a 0";
+    content: "฿4k \a฿3k \a฿2k \a฿1k \a 0";
     white-space: pre;
     height: 100%;
     line-height: 4.2;
@@ -252,7 +259,7 @@
     content: "07:00น 21:00น";
     width: 110%;
     margin-left: -5%;
-    word-spacing: 36.5em;
+    word-spacing: 32.5em;
     padding-top: 0.5em;
   }
 
@@ -374,17 +381,14 @@
 
 
 
-
 <div class="row">
   <div class="col-4">
     <div class="card card-1">
       <div class="upper-card">
         <p>รายได้วันนี้</p>
       </div>
-      <div class="under-card">
-        <img src="../static/images/undraw_Savings_dwkw.svg">
-        <label>9,890</label>
-      </div>
+      <img src="../static/images/undraw_Savings_dwkw.svg">
+      <label>9,890</label>
     </div>
   </div>
   <div class="col-4">
@@ -392,10 +396,8 @@
       <div class="upper-card">
         <p>ยอดผู้ใช้บริการ</p>
       </div>
-      <div class="under-card">
-        <img src="../static/images/undraw_wandering_mind_0mkm.svg">
-        <label>1,547</label>
-      </div>
+      <img src="../static/images/undraw_wandering_mind_0mkm.svg">
+      <label>1,547</label>
     </div>
   </div>
   <div class="col-4">
@@ -403,10 +405,8 @@
       <div class="upper-card">
         <p>ยอดการสั่งอาหาร</p>
       </div>
-      <div class="under-card">
-        <img src="../static/images/undraw_chore_list_iof3.svg">
-        <label>849</label>
-      </div>
+      <img src="../static/images/undraw_chore_list_iof3.svg">
+      <label>849</label>
     </div>
   </div>
 </div>
@@ -422,15 +422,15 @@
 
 <div class="row">
   <div class="col-6">
-    <div class="grid">
+    <div class="grid shadow-sm p-3 mb-5 bg-white rounded">
       <section>
         <h4>อัตราการเจริญเติบโต</h4>
         <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200"
           xmlns="http://www.w3.org/2000/svg">
           <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431"
             cy="16.91549431" r="15.91549431" />
-          <circle class="circle-chart__circle" stroke="#00acc1" stroke-width="2" stroke-dasharray="30,100"
-            stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+          <circle class="circle-chart__circle" stroke="#4cd137" stroke-width="2" stroke-dasharray="30,100"
+            stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431"/>
           <g class="circle-chart__info">
             <text class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central"
               text-anchor="middle" font-size="8">30%</text>
@@ -446,7 +446,7 @@
           xmlns="http://www.w3.org/2000/svg">
           <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431"
             cy="16.91549431" r="15.91549431" />
-          <circle class="circle-chart__circle circle-chart__circle--negative" stroke="#00acc1" stroke-width="2"
+          <circle class="circle-chart__circle circle-chart__circle--negative" stroke="#ee5253" stroke-width="2"
             stroke-dasharray="10,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431"
             r="15.91549431" />
           <g class="circle-chart__info">
@@ -459,6 +459,8 @@
       </section>
     </div>
   </div>
+
+
 
   <div class="col-6">
     <div class='chart'>
@@ -501,18 +503,6 @@
 
 
 
-
-<!-- <body ng-app="app">
-  <h2>Highcharts Example</h2>
-  <div class="app-wrapper" ng-controller="ctrl">
-    <div class="chartWrap">
-      <div id="onFeedChart"></div>
-    </div>
-    <div class="chartWrap">
-      <div id="photoUploadChart"></div>
-    </div>
-  </div>
-</body> -->
 
 
 
@@ -604,6 +594,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.js"></script>
+
+
+
+
 
 
 <script>
