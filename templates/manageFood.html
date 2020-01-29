@@ -24,7 +24,6 @@
     td {
         text-align: center;
     }
-
 </style>
 {% endblock %}
 
@@ -80,26 +79,28 @@
                 <div class="col">
                     <label for="exampleFormControlTextarea1">รูปอาหาร</label>
                     <div class="custom-file">
-                        <input type="file" name="file[]" class="custom-file-input" id="customFile" required>
+                        <input type="file" name="file[]" class="custom-file-input" id="customFile"
+                            onchange="processSelectedFiles(this),loadFile(event)" accept="image/*" required>
                         <input type="hidden" name="url" id="url">
-                        <span class="custom-file-label" for="customFile" style="display: inline;">เลือกรูปอาหาร</label>
+                        <span id="showfilename" class="custom-file-label" for="customFile"
+                            style="display: inline;">เลือกรูปอาหาร</label>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-primary" onclick="uploadimage()"
+                    <button type="button" class="btn btn-primary" onclick="uploadimage(),changtype()"
                         style="margin-top: 30px;">อัพโหลดรูปภาพ</button>
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-primary" style="margin-top: 30px;">บันทึกข้อมูล</button>
+                    <button type="submit" id="savedata" class="btn btn-primary" style="margin-top: 30px;" disabled>บันทึกข้อมูล</button>
                 </div>
             </div>
         </form>
     </div>
     <div class="col-6">
         <img src="../static/images/Untitled-1.jpg" alt="แสดงตัวอย่างรูปภาพที่อัพโหลด" class="img-thumbnail"
-            style="float: center; width: 400px; height: 400px;">
+            style="float: center; width: 400px; height: 400px;" id="output">
     </div>
 </div>
 
@@ -121,7 +122,7 @@
                 <tbody>
                     {% for i in foods %}
                     <tr>
-                        <td><img src="{{i.photourl}}" ></td>
+                        <td><img src="{{i.photourl}}"></td>
                         <td>{{i.name}}</td>
                         <td>{{i.detail}}</td>
                         <td>{{i.price}}</td>
@@ -185,6 +186,28 @@
             alert("อัพโหลดรูปภาพสําเร็จ!!!")
             document.getElementById("url").value = downloadURL;
         });
+    }
+
+
+    function processSelectedFiles(fileInput) {
+        var files = fileInput.files;
+
+        for (var i = 0; i < files.length; i++) {
+            document.getElementById('showfilename').innerHTML = files[i].name;
+        }
+    }
+
+    var loadFile = function (event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    };
+
+    function changtype() {
+        document.getElementById("savedata").disabled = false;
     }
 
 
