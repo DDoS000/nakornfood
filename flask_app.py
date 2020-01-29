@@ -7,6 +7,7 @@ import pyrebase
 
 app = Flask(__name__)
 
+
 configuse = {
   "type": "service_account",
   "project_id": "foodmanage-e63a1",
@@ -203,5 +204,7 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.secret_key = 'DDoS'
+    app.secret_key = 'super secret key'
+    app.config['SESSION_TYPE'] = 'filesystem'
+
     app.run(debug=True)
