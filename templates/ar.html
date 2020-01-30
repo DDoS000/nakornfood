@@ -3,17 +3,17 @@
 <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
 <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
 
+
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs>
+    <a-scene vr-mode-ui="enabled: false" embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
         <a-marker preset="hiro">
-            <!-- <a-box position='0 0.5 0' material='color: yellow;'></a-box> -->
-            <!-- <a-assets> -->
-                <a-asset-item  id="cityModel" src="../static/models/breakfast_set_obj.gltf"></a-asset-item>
-              <!-- </a-assets> -->
-              <a-entity  scale=".1 .1 .1" gltf-model="#cityModel" modify-materials></a-entity>
+            <a-asset-item id="cityModel" src="../static/models/breakfast_set_obj.gltf"></a-asset-item>
+            <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 10000" scale="0.06 0.06 0.06" gltf-model="#cityModel"></a-entity>
         </a-marker>
-        <!-- <a-entity camera></a-entity> -->
+        <a-entity camera></a-entity>
     </a-scene>
 </body>
 
 </html>
+
+<!-- <a-animation attribute="rotation" to="90 360 0" dur="9000" repeat="indefinite" easing="linear"></a-animation> -->
