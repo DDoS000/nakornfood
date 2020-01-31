@@ -9,16 +9,16 @@ app = Flask(__name__)
 
 
 configuse = {
-  "type": "service_account",
-  "project_id": "foodmanage-e63a1",
-  "private_key_id": "bda07ba57843d1e3fa3219f8549607b357a24c02",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCm3BIxzSU7nd0h\nYdiL8mqmCB1+RwDGrBjtXALzBOfGUKpxU0nKdlk05gPbT0S4vHP5YU3OSWz66nuH\nh9QbOD0VZ/S4XUeu9hOdjRfvp+tYnigTrFekCZeGgOuErKncCnkBdohZEEK2Mvfa\nOb/nUebqMqUWA5SVC26krVmd2Yh5LUkU/fgQJ1zBKQzA/ekVW5AxRb+WZKOuasBb\nYCmMtNz8OcEDMXPyMJ5BMU/ONCC5Mt081K6UqqTSW5psy4Lgp2T9cYb+XL60A6ov\n8UyWbw/9aI1S8+6sqltkRwzt7RURE5DtcoKgKl54XPLMbHV4/n7EJXEBdXAjEi9B\nbtyJFr27AgMBAAECggEAF07hMRkO/RJC3smO45MBWCAEvqxRwhmC1zqQeZH92Qim\nRnOeoywqWeaniJhnaRwqDHPjLSW563LwaTDiwsqgUxUqbMva75MVj7SIhhmsGRI+\nrEDZco3vH1gdjh2bEfmvMt0elBJev0TEtTR2nMF8GCBASfWbaRZ9ENPbk4kyNHrn\nnPiBzUKa/AFNon3D477Dd8Xj3glzSoAji0n8zQPM+da6o7qomVQyp3NcCu/Hirg7\nXAfn108RLr7kNthr9dJS+wrDJQyXYyKl8HaD7w5sFz4Va+FLBM8Y1w5RE1/nOP1P\n6JxMOOMOjXH72ddafzCpuEjrYW3qoicSHtBm89KlAQKBgQDjOC4S1CrN4c9Ku7ma\nlnWx33V9l25BVJgu+Vhvjo7AJZFNy5wFrEx2nOaez1x8bxT4M8S5RqsQU/m6JYab\nhZV02w8q26B8mx1Ils5cW/FwQKGMCJu7edeCW0jkeHlZPHuX2+WCdc1TDsO9k/xS\nJ9Hzq5KrIslOPVJT8ftEpeNjKwKBgQC7/qnmHfXqHGDe7B25dj+GJM9C2wUcqo+V\ndogPQSu5bXwayFNjuL6b8a1AEa0kVNx5wjQqa7U4PJv1S8NL7PpG29RHjz4cOSHI\npFi61FaJIiHZtpUBcEj1WVQiS/auYgBYprkV8bXMiSBxN5pMTAPNb+VecxsN1grB\nRRcdLPsHsQKBgBZ2hF+KKB0oeMTLoEK/Iy2NiOD8qoK86TqjnfGRZ11pmV7WhTsu\nWHTVeBs1JtCKbslG3OjwKpM3qhWUBiWz5B2kVnCHO+t1rkRx3D7XPBw713yvkS3M\nktipS6CCpISE7TcLHzpxiPXwHLvOOICqvR/Y02wlyT754vy3jH6x47P3AoGAGC0L\n1FgOA+laW9CpkewvByU8sjBQW/tjM6lmne+Xm+UEjL0uXCip+ov957teNMnlAJOE\n+d+YEn9Y3xa7Ksxy8yHaDsnRBvgh7BeWgZBFAKWvDLx6NREnkMXIGBEEzDA2MzBd\npQDMjF0mGuk3opAz/Pti196doA3inDAyZMIgFkECgYEAnZLHkcs6CgKMY9Yvgb+q\nOoywreKpeqDXijReA1J551lEwpkyHwbfdVYyuTVFyHto6sMHqn20hLWUxbDlWDsY\nclN8fqSwSZk/Jm81C40e7rEEybIcDUqq0eHgU5dydaB7Y1yVSXPNflm7c65BXc2E\ng/f2ynG/bFcvHPC2N0e44uY=\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-jvifj@foodmanage-e63a1.iam.gserviceaccount.com",
-  "client_id": "103611357675025426296",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jvifj%40foodmanage-e63a1.iam.gserviceaccount.com"
+    "type": "service_account",
+    "project_id": "foodmanage-e63a1",
+    "private_key_id": "bda07ba57843d1e3fa3219f8549607b357a24c02",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCm3BIxzSU7nd0h\nYdiL8mqmCB1+RwDGrBjtXALzBOfGUKpxU0nKdlk05gPbT0S4vHP5YU3OSWz66nuH\nh9QbOD0VZ/S4XUeu9hOdjRfvp+tYnigTrFekCZeGgOuErKncCnkBdohZEEK2Mvfa\nOb/nUebqMqUWA5SVC26krVmd2Yh5LUkU/fgQJ1zBKQzA/ekVW5AxRb+WZKOuasBb\nYCmMtNz8OcEDMXPyMJ5BMU/ONCC5Mt081K6UqqTSW5psy4Lgp2T9cYb+XL60A6ov\n8UyWbw/9aI1S8+6sqltkRwzt7RURE5DtcoKgKl54XPLMbHV4/n7EJXEBdXAjEi9B\nbtyJFr27AgMBAAECggEAF07hMRkO/RJC3smO45MBWCAEvqxRwhmC1zqQeZH92Qim\nRnOeoywqWeaniJhnaRwqDHPjLSW563LwaTDiwsqgUxUqbMva75MVj7SIhhmsGRI+\nrEDZco3vH1gdjh2bEfmvMt0elBJev0TEtTR2nMF8GCBASfWbaRZ9ENPbk4kyNHrn\nnPiBzUKa/AFNon3D477Dd8Xj3glzSoAji0n8zQPM+da6o7qomVQyp3NcCu/Hirg7\nXAfn108RLr7kNthr9dJS+wrDJQyXYyKl8HaD7w5sFz4Va+FLBM8Y1w5RE1/nOP1P\n6JxMOOMOjXH72ddafzCpuEjrYW3qoicSHtBm89KlAQKBgQDjOC4S1CrN4c9Ku7ma\nlnWx33V9l25BVJgu+Vhvjo7AJZFNy5wFrEx2nOaez1x8bxT4M8S5RqsQU/m6JYab\nhZV02w8q26B8mx1Ils5cW/FwQKGMCJu7edeCW0jkeHlZPHuX2+WCdc1TDsO9k/xS\nJ9Hzq5KrIslOPVJT8ftEpeNjKwKBgQC7/qnmHfXqHGDe7B25dj+GJM9C2wUcqo+V\ndogPQSu5bXwayFNjuL6b8a1AEa0kVNx5wjQqa7U4PJv1S8NL7PpG29RHjz4cOSHI\npFi61FaJIiHZtpUBcEj1WVQiS/auYgBYprkV8bXMiSBxN5pMTAPNb+VecxsN1grB\nRRcdLPsHsQKBgBZ2hF+KKB0oeMTLoEK/Iy2NiOD8qoK86TqjnfGRZ11pmV7WhTsu\nWHTVeBs1JtCKbslG3OjwKpM3qhWUBiWz5B2kVnCHO+t1rkRx3D7XPBw713yvkS3M\nktipS6CCpISE7TcLHzpxiPXwHLvOOICqvR/Y02wlyT754vy3jH6x47P3AoGAGC0L\n1FgOA+laW9CpkewvByU8sjBQW/tjM6lmne+Xm+UEjL0uXCip+ov957teNMnlAJOE\n+d+YEn9Y3xa7Ksxy8yHaDsnRBvgh7BeWgZBFAKWvDLx6NREnkMXIGBEEzDA2MzBd\npQDMjF0mGuk3opAz/Pti196doA3inDAyZMIgFkECgYEAnZLHkcs6CgKMY9Yvgb+q\nOoywreKpeqDXijReA1J551lEwpkyHwbfdVYyuTVFyHto6sMHqn20hLWUxbDlWDsY\nclN8fqSwSZk/Jm81C40e7rEEybIcDUqq0eHgU5dydaB7Y1yVSXPNflm7c65BXc2E\ng/f2ynG/bFcvHPC2N0e44uY=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-jvifj@foodmanage-e63a1.iam.gserviceaccount.com",
+    "client_id": "103611357675025426296",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jvifj%40foodmanage-e63a1.iam.gserviceaccount.com"
 }
 
 # Use a service account
@@ -170,13 +170,28 @@ def manageFood():
         price = request.form['foodprice']
         url = request.form['url']
         print("setdata")
+        try:
+            print(docs)
+            counts = docs['count']
+            counts + 1
+        except KeyError:
+            try:
+                db.collection(u'users').document(session['uid']).update( {u"count": 0})
+            except KeyError:
+                print("upcountna")
+            counts = 0
+            print("Error Get data count")
+
         data = {
+            u"foodId": counts,
             u"name": foodname,
             u"detail": detail,
             u"price": price,
             u"photourl": url
         }
         try:
+            db.collection(u'users').document(session['uid']).update({u"count": counts})
+            print("upcountpass")
             db.collection(u'users').document(session['uid']).update(
                 {u'menu': firestore.ArrayUnion([data])})
         except KeyError:
@@ -187,8 +202,9 @@ def manageFood():
         print("getfoodspass")
     except KeyError:
         print("getfoodsError")
-        foods = [{'photourl': '', 'name': 'ยังไม่มีข้อมูลในระบบ', 'detail': 'ยังไม่มีข้อมูลในระบบ', 'price': 'ยังไม่มีข้อมูลในระบบ'}]
-    
+        foods = [{'photourl': '', 'name': 'ยังไม่มีข้อมูลในระบบ',
+                  'detail': 'ยังไม่มีข้อมูลในระบบ', 'price': 'ยังไม่มีข้อมูลในระบบ', 'foodId': 'notvalue'}]
+
     return render_template('manageFood.html', foods=foods)
 
 
@@ -196,6 +212,7 @@ def manageFood():
 @is_logged_in
 def manageSeat():
     return render_template('manageSeat.html')
+
 
 @app.route('/ar')
 def ar():
@@ -209,6 +226,7 @@ def logout():
     session.clear()
     flash('ออกจากระบบสําเร็จ', 'success')
     return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.secret_key = '802a10465059f4276f654ab46b8033a2'
