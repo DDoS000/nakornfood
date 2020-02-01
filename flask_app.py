@@ -164,38 +164,6 @@ def manageStore():
 @is_logged_in
 def manageFood():
     docs = GetDataUser(session['uid'])
-    if request.method == "POST":
-        foodname = request.form['foodname']
-        detail = request.form['foodedtail']
-        price = request.form['foodprice']
-        url = request.form['url']
-        print("setdata")
-        try:
-            print(docs)
-            counts = docs['count']
-            counts + 1
-        except KeyError:
-            try:
-                db.collection(u'users').document(session['uid']).update( {u"count": 0})
-            except KeyError:
-                print("upcountna")
-            counts = 0
-            print("Error Get data count")
-
-        data = {
-            u"foodId": counts,
-            u"name": foodname,
-            u"detail": detail,
-            u"price": price,
-            u"photourl": url
-        }
-        try:
-            db.collection(u'users').document(session['uid']).update({u"count": counts})
-            print("upcountpass")
-            db.collection(u'users').document(session['uid']).update(
-                {u'menu': firestore.ArrayUnion([data])})
-        except KeyError:
-            print(KeyError)
 
     try:
         foods = docs["menu"]
@@ -206,6 +174,47 @@ def manageFood():
                   'detail': 'ยังไม่มีข้อมูลในระบบ', 'price': 'ยังไม่มีข้อมูลในระบบ', 'foodId': 'notvalue'}]
 
     return render_template('manageFood.html', foods=foods)
+
+
+@app.route('/addfoods/', methods=['GET', 'POST'])
+@is_logged_in
+def addfoods():
+    if request.method == "POST":
+        foodname = request.form['foodname']
+        detail = request.form['foodedtail']
+        price = request.form['foodprice']
+        url = request.form['url']
+        print("setdata")
+        try:
+            counts = GetDataUser(session['uid'])['count']
+            counts += 1
+        except KeyError:
+            try:
+                print("UP0")
+                counts = 0
+                db.collection(u'users').document(
+                    session['uid']).update({u"count": 0})
+            except KeyError:
+                print("upcountna")
+            print("Error Get data count")
+        print(counts)
+        data = {
+            u"foodId": counts,
+            u"name": foodname,
+            u"detail": detail,
+            u"price": price,
+            u"photourl": url
+        }
+        try:
+            db.collection(u'users').document(
+                session['uid']).update({u"count": counts})
+            print("upcountpass")
+            db.collection(u'users').document(session['uid']).update(
+                {u'menu': firestore.ArrayUnion([data])})
+        except KeyError:
+            print(KeyError)
+
+    return redirect(url_for('manageFood'))
 
 
 @app.route('/manageSeat')
