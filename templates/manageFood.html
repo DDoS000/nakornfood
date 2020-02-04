@@ -24,6 +24,12 @@
     td {
         text-align: center;
     }
+
+    .fiximg{
+        width: auto;
+        height: 50px;
+        vertical-align: middle !important;
+    }
 </style>
 {% endblock %}
 
@@ -121,8 +127,8 @@
                 </thead>
                 <tbody>
                     {% for i in foods %}
-                    <tr>
-                        <td><img src="{{i.photourl}}"></td>
+                    <tr style="height: 15px;">
+                        <td><img src="{{i.photourl}}" class="fiximg">
                         <td>{{i.name}}</td>
                         <td>{{i.detail}}</td>
                         <td>{{i.price}}</td>

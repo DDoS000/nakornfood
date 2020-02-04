@@ -50,6 +50,10 @@
         display: inline-block;
         margin-top: 20px;
     }
+
+    .edit{
+        width: 100%;
+    }
 </style>
 
 
@@ -77,14 +81,14 @@
 <div class="row">
     <div class="col-2">
         <div class="spinner-grow text-success" role="status">
-          </div>
+        </div>
         <span>ที่นั่งว่าง</span>
     </div>
 </div>
 <div class="row">
     <div class="col-2">
         <div class="spinner-grow text-danger" role="status">
-          </div>
+        </div>
         <span>ที่นั่งไม่ว่าง</span>
     </div>
 </div>
@@ -101,6 +105,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ - </p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -113,6 +118,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ - </p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -125,6 +131,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ 11:10 น. 25/1/63</p>
                 <p class="card-text">จำนวน 5 คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 </div>
@@ -140,6 +147,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ 11:35 น. 25/1/63 </p>
                 <p class="card-text">จำนวน 3 คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -152,6 +160,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ - </p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -164,6 +173,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ -</p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -180,6 +190,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ - </p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -192,6 +203,7 @@
                 <p class="card-text">เวลาที่จองโต๊ะ - </p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
@@ -204,10 +216,66 @@
                 <p class="card-text">เวลาที่จองโต๊ะ -</p>
                 <p class="card-text">จำนวน - คน </p>
             </div>
+            <button type="button" class="btn btn-light edit" data-toggle="modal" data-target="#exampleModal">แก้ไข</button>
         </div>
     </div>
 
 </div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">วันที่/เวลาที่จองโต๊ะ</label>
+            <input type="datetime-local" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">จำนวนคน</label>
+            <input class="form-control" type="number" value="42" id="example-number-input">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-warning">บันทึก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('จัดการที่นั่ง')
+  modal.find('.modal-body input').val(recipient)
+})
+  
+  
+  </script>
+
+
 
 
 
