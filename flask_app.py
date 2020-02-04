@@ -227,6 +227,10 @@ def manageSeat():
 def ar():
     return render_template('ar.html')
 
+@app.route('/ar2')
+def ar():
+    return render_template('ar2.html')
+
 
 # Logout
 @app.route('/logout')
